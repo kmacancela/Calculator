@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     var numberOnScreen:Double = 0;
     var previousNumber:Double = 0;
     var performingMath = false;
+    var operation = 0;
 
     @IBOutlet weak var label: UILabel!
     
@@ -44,7 +45,28 @@ class ViewController: UIViewController {
             else if sender.tag == 15 {
                 label.text = "+";
             }
+            operation = sender.tag;
             performingMath = true;
+        }
+        else if sender.tag == 16 {
+            if operation == 12 {
+                label.text = String(previousNumber / numberOnScreen);
+            }
+            else if operation == 13 {
+                label.text = String(previousNumber * numberOnScreen);
+            }
+            else if operation == 14 {
+                label.text = String(previousNumber - numberOnScreen);
+            }
+            else if operation == 15 {
+                label.text = String(previousNumber + numberOnScreen);
+            }
+        }
+        else if sender.tag == 11 {
+            label.text = "";
+            previousNumber = 0;
+            numberOnScreen = 0;
+            operation = 0;
         }
     }
     
